@@ -15,13 +15,15 @@ Google Sheets utilities in App Script
 
 Define in your App Script the utilities you want to use. Examples:
 ```console
-const ActionUtils = GSUtils.getActionUtils();
-const FormatUtils = GSUtils.getFormatUtils();
-const CurrencyUtils = GSUtils.getCurrencyUtils();
+const ActionUtils = GSUtils.loadActionUtils();
+const FormatUtils = GSUtils.loadFormatUtils();
+const CurrencyUtils = GSUtils.loadCurrencyUtils();
+const EventUtils = GSUtils.loadEventUtils();
 ```
 
 Get instance of those utilities. Examples:
 ```console
 const actionUtils = ActionUtils.getInstance(spreadsheet);
 const formatUtils = FormatUtils.getInstance(spreadsheet);
+const eventUtils  = EventUtils.getInstance(spreadsheet);
 ```

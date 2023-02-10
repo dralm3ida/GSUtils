@@ -1,15 +1,3 @@
-function getActionUtils() {
-  return ActionUtils;
-}
-
-function getFormatUtils() {
-  return FormatUtils;
-}
-
-function getCurrencyUtils() {
-  return CurrencyUtils;
-}
-
 class GSUtils {
   constructor(spreadsheet, sheetName) {
     this._ss = spreadsheet;
@@ -28,3 +16,20 @@ class GSUtils {
   }
 }
 
+function exists(value){
+  var res = false;
+  if ( (undefined != value) && (null != value) ){ res = true; }
+  return res;
+}
+ 
+function isEmpty(value) {
+  return !(exists(value) && value != "");
+}
+
+function flatNonEmpty(values) {
+  return values.reduce(function(acc, el) { 
+    return acc.concat(el.filter(function(val) {
+      return val != "";  
+    }));
+  });
+}

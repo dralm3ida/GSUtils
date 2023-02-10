@@ -36,14 +36,19 @@ class ActionUtils extends SpreadsheetUtils {
   }
 
   addRowToTopOfTable(sheetName, topRow, firstColumn, dataRangeA1Notation) {
-    Logger.log(`addRowToTopOfTable(sheetName=${sheetName}, topRow=${topRow}, firstColumn=${firstColumn}, dataRangeA1Notation=${dataRangeA1Notation}) - START`);
-
     let dataSheet = this.getDataSheet(sheetName);
     let newDataRange = dataSheet.getRange(dataRangeA1Notation);
     let newEntryRange = dataSheet.getRange(topRow, firstColumn, 1, newDataRange.getNumColumns());
 
     dataSheet.insertRowsBefore(topRow, 1);
     newEntryRange.setValues(newDataRange.getValues());
+  }
+
+  addValuesToTopOfTable(sheetName, topRow, firstColumn, values) {
+    let dataSheet = this.getDataSheet(sheetName);
+    let newEntryRange = dataSheet.getRange(topRow, firstColumn, 1, values.length);
+    dataSheet.insertRowsBefore(topRow, 1);
+    newEntryRange.setValues([values]);
   }
 }
 

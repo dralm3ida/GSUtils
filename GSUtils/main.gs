@@ -33,3 +33,22 @@ function flatNonEmpty(values) {
     }));
   });
 }
+
+function sortDates(dates, asc) {
+  return dates.sort(function(a, b) {
+    return (asc) ? (a-b) : (b-a);
+  });
+}
+
+function filterDatesByLastMonth(sortedDatesDesc) {
+  var res = [];
+  sortedDatesDesc.reduce(function(current, next, idx) {
+    if (idx == 1) { res.push(current); }
+    
+    if (next.getMonth() >= current.getMonth()) {
+      res.push(next);
+    }
+    return current;
+  });
+  return res;
+}
